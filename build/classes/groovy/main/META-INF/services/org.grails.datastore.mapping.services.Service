@@ -1,0 +1,15 @@
+com.cheapsell.product.$ConditionServiceImplementation
+com.cheapsell.product.$ItemServiceImplementation
+com.cheapsell.product.$ShippingOptionServiceImplementation
+com.cheapsell.product.$UsageServiceImplementation
+com.cheapsell.transaction.$TransactionHistoryServiceImplementation
+com.cheapsell.transaction.$TransactionTypeServiceImplementation
+com.cheapsell.transaction.$UserItemServiceImplementation
+com.cheapsell.user.$AdminServiceImplementation
+com.cheapsell.user.$ContactServiceImplementation
+com.cheapsell.user.$CreditInformationServiceImplementation
+com.cheapsell.user.$LoginServiceImplementation
+com.cheapsell.user.$ProfileServiceImplementation
+com.cheapsell.user.$UserProfileTypeServiceImplementation
+com.cheapsell.user.$UserServiceImplementation
+com.cheapsell.user.$WishListServiceImplementation
