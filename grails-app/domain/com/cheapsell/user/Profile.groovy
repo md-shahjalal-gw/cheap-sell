@@ -1,18 +1,20 @@
 package com.cheapsell.user
 
-class Profile {
+class Profile extends Login {
 
-    Login login
     String firstName
     String lastName
-    Contact primary
-    Contact secondary
+
+    String contactStreet1
+    String contactStreet2
+    String contactCity
+    String contactZip
+    String contactState
+    String contactEmail
+    String contactPhone
+    ContactType contactType
 
     UserProfileType userProfileType
-
-    static mapping = {
-        login lazy: false
-    }
 
     static constraints = {
     }
