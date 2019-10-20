@@ -1,37 +1,33 @@
 package com.cheapsell.user
 
 import groovy.transform.EqualsAndHashCode
+import groovy.transform.ToString
+import grails.compiler.GrailsCompileStatic
 
-@EqualsAndHashCode(includes='loginName')
+@GrailsCompileStatic
+@EqualsAndHashCode(includes='username')
+@ToString(includes='username', includeNames=true, includePackage=false)
 class Login implements Serializable {
 
     private static final long serialVersionUID = 1
 
-    long id
-    long version
-
-    String firstName
-    String lastName
-    String loginName
+    String username
     String password
+    boolean enabled = true
+    boolean accountExpired
+    boolean accountLocked
+    boolean passwordExpired
 
-    boolean active
-    Date createDate
-    Date updateDate
-
-    Contact primaryContact;
-    Contact secondaryContact;
-
-    transient springSecurityService
-
-//    protected void encodePassword() {
-//        password = springSecurityService.encodePassword(password)
-//    }
-//
-//    static transients = ['springSecurityService']
+    Set<Role> getAuthorities() {
+        (LoginRole.findAllByLogin(this) as List<LoginRole>)*.role as Set<Role>
+    }
 
     static constraints = {
-        loginName blank: false, unique: true
-        password blank: false, password: true
+        password nullable: false, blank: false, password: true
+        username nullable: false, blank: false, unique: true
+    }
+
+    static mapping = {
+	    password column: '`password`'
     }
 }

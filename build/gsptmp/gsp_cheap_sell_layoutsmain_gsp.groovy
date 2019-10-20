@@ -46,14 +46,14 @@ invokeTag('image','asset',20,['src':("grails.svg"),'alt':("Grails Logo")],-1)
 printHtmlPart(7)
 invokeTag('pageProperty','g',27,['name':("page.nav")],-1)
 printHtmlPart(8)
-invokeTag('layoutBody','g',33,[:],-1)
+invokeTag('layoutBody','g',34,[:],-1)
 printHtmlPart(9)
-invokeTag('message','g',36,['code':("spinner.alt"),'default':("Loading&hellip;")],-1)
+invokeTag('message','g',37,['code':("spinner.alt"),'default':("Loading&hellip;")],-1)
 printHtmlPart(10)
-invokeTag('javascript','asset',39,['src':("application.js")],-1)
+invokeTag('javascript','asset',40,['src':("application.js")],-1)
 printHtmlPart(5)
 })
-invokeTag('captureBody','sitemesh',41,[:],1)
+invokeTag('captureBody','sitemesh',42,[:],1)
 printHtmlPart(11)
 }
 public static final Map JSP_TAGS = new HashMap()
@@ -61,7 +61,7 @@ protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1571542020000L
+public static final long LAST_MODIFIED = 1571608810000L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'none'
