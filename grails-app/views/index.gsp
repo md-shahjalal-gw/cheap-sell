@@ -20,7 +20,7 @@
         <h1>Welcome to Cheap Sell</h1>
 
         <p>
-            Moto.....
+            Its a $100 furniture shop. Buy and sell used furniture within $100.
         </p>
 
         <div id="controllers" role="navigation">
