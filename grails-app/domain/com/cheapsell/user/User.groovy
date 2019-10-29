@@ -31,5 +31,6 @@ class User implements Serializable {
     UserProfileType userProfileType
 
     static constraints = {
+        updateDate(nullable: true)
     }
 }
