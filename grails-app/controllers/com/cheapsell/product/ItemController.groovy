@@ -1,11 +1,30 @@
 package com.cheapsell.product
 
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.validation.ValidationException
+import org.springframework.beans.factory.annotation.Autowired
+
 import static org.springframework.http.HttpStatus.*
 
 class ItemController {
 
+    @Autowired
+    SpringSecurityService springSecurityService
+
     ItemService itemService
+
+    def constraints = {
+        name()
+        askingPrice()
+        negotiable()
+        shippingOption()
+        condition()
+        usage()
+        description()
+        weight()
+        color()
+        material()
+    }
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -29,6 +48,9 @@ class ItemController {
         }
 
         try {
+            item.setCreatedBy(springSecurityService.getCurrentUser())
+            item.setCreateDate(new Date())
+
             itemService.save(item)
         } catch (ValidationException e) {
             respond item.errors, view:'create'
@@ -55,6 +77,9 @@ class ItemController {
         }
 
         try {
+            item.setUpdatedBy(springSecurityService.getCurrentUser())
+            item.setUpdateDate(new Date())
+
             itemService.save(item)
         } catch (ValidationException e) {
             respond item.errors, view:'edit'

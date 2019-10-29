@@ -7,7 +7,7 @@ class User extends Profile {
 
     double rating
 
-    static hasMany = [items: Item]
+    UserProfileType userProfileType
 
     static constraints = {
     }

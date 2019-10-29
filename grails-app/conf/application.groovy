@@ -1,4 +1,7 @@
 grails {
+    gorm {
+        autowire: true
+    }
     plugin {
         springsecurity {
             rest {
@@ -8,6 +11,13 @@ grails {
                         tokenDomainClassName = 'com.cheapsell.security.AuthenticationToken'
                     }
                 }
+            }
+            successHandler {
+                alwaysUseDefault = true
+                defaultTargetUrl = '/home/index'
+            }
+            logout {
+                afterLogoutUrl = '/login'
             }
             securityConfigType = "InterceptUrlMap"
 //            filterChain {
@@ -47,6 +57,7 @@ grails {
                     [pattern: '/logout',                access: ['permitAll']],
                     [pattern: '/logout/**',             access: ['permitAll']],
                     [pattern: '/dbconsole/**',          access: ['permitAll']],
+                    [pattern: '/home/**',       access: ['ROLE_SELLER', 'ROLE_BUYER', 'ROLE_ADMIN']],
                     [pattern: '/user/**',       access: ['ROLE_SELLER', 'ROLE_BUYER', 'ROLE_ADMIN']],
                     [pattern: '/item',          access: ['ROLE_SELLER', 'ROLE_BUYER', 'ROLE_ADMIN']],
                     [pattern: '/item/index',    access: ['ROLE_SELLER', 'ROLE_BUYER', 'ROLE_ADMIN']],

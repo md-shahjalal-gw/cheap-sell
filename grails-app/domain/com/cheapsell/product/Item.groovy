@@ -1,5 +1,7 @@
 package com.cheapsell.product
 
+import com.cheapsell.user.Login
+
 class Item implements Serializable {
 
     private static final long serialVersionUID = 1
@@ -17,6 +19,11 @@ class Item implements Serializable {
     int weight
     String color
     String material
+
+    Login createdBy
+    Date createDate
+    Login updatedBy
+    Date updateDate
 
     static constraints = {
     }

@@ -1,6 +1,6 @@
 package com.cheapsell.user
 
-class Profile extends Login {
+class Profile {
 
     String firstName
     String lastName
@@ -14,7 +14,12 @@ class Profile extends Login {
     String contactPhone
     ContactType contactType
 
-    UserProfileType userProfileType
+    Login login
+
+    static mapping = {
+        login lazy: false
+    }
+
 
     static constraints = {
     }

@@ -9,6 +9,10 @@ import grails.compiler.GrailsCompileStatic
 @ToString(includes='authority', includeNames=true, includePackage=false)
 class Role implements Serializable {
 
+	public static final String ADMIN = 'ROLE_ADMIN'
+	public static final String BUYER = 'ROLE_BUYER'
+	public static final String SELLER = 'ROLE_SELLER'
+
 	private static final long serialVersionUID = 1
 
 	String authority

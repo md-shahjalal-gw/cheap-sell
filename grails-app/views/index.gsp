@@ -17,20 +17,41 @@
 
 <div id="content" role="main">
     <section class="row colset-2-its">
-        <h1>Welcome to Cheap Sell</h1>
+        <h1>Welcome ${user} to Cheap Sell</h1>
 
         <p>
             Its a $100 furniture shop. Buy and sell used furniture within $100.
         </p>
 
         <div id="controllers" role="navigation">
-            <h2>Links:</h2>
+            <h2></h2>
             <ul>
-                <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+                <g:if test="${role == 'admin'}">
                     <li class="controller">
-                        <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
+                        <g:link controller="user" action="index">Users</g:link>
+                    </li><li class="controller">
+                        <g:link controller="item" action="index">Items</g:link>
                     </li>
-                </g:each>
+                </g:if>
+                <g:elseif test="${role == 'buyer'}">
+                    <li class="controller">
+                        <g:link controller="user" action="edit" id="${id}">Profile</g:link>
+                    </li>
+                    <li class="controller">
+                        <g:link controller="user" action="edit" id="${id}">Profile</g:link>
+                    </li>
+                </g:elseif>
+                <g:elseif test="${role == 'seller'}">
+                    <li class="controller">
+                        <g:link controller="user" action="edit" id="${id}">Profile</g:link>
+                    </li>
+                    <li class="controller">
+                        <g:link controller="item" action="index">Items</g:link>
+                    </li>
+                </g:elseif>
+                <g:else>
+                    Please Register or <a href="/login">Login</a>
+                </g:else>
             </ul>
         </div>
     </section>

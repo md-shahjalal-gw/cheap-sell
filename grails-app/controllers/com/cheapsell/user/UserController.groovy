@@ -1,15 +1,26 @@
 package com.cheapsell.user
 
+import com.cheapsell.AuthUtils
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.validation.ValidationException
+import org.springframework.beans.factory.annotation.Autowired
+
 import static org.springframework.http.HttpStatus.*
 
 class UserController {
+
+    @Autowired
+    SpringSecurityService springSecurityService
 
     UserService userService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+        if (!AuthUtils.hasRole(Role.ADMIN)) {
+            render(view: "/accessDenied")
+        }
+
         params.max = Math.min(max ?: 10, 100)
         respond userService.list(params), model:[userCount: userService.count()]
     }
@@ -19,6 +30,10 @@ class UserController {
     }
 
     def create() {
+        if (!AuthUtils.hasRole(Role.ADMIN)) {
+            render(view: "/accessDenied")
+        }
+
         respond new User(params)
     }
 
@@ -45,6 +60,10 @@ class UserController {
     }
 
     def edit(Long id) {
+        if (!AuthUtils.hasRole(Role.ADMIN) && springSecurityService.getCurrentUserId() != id) {
+            render(view: "/accessDenied")
+        }
+
         respond userService.get(id)
     }
 
@@ -52,6 +71,10 @@ class UserController {
         if (user == null) {
             notFound()
             return
+        }
+
+        if (!AuthUtils.hasRole(Role.ADMIN) && springSecurityService.getCurrentUserId() != user.id) {
+            render(view: "/accessDenied")
         }
 
         try {
@@ -74,6 +97,10 @@ class UserController {
         if (id == null) {
             notFound()
             return
+        }
+
+        if (!AuthUtils.hasRole(Role.ADMIN)) {
+            render(view: "/accessDenied")
         }
 
         userService.delete(id)
