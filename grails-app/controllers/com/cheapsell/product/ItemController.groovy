@@ -13,19 +13,6 @@ class ItemController {
 
     ItemService itemService
 
-    def constraints = {
-        name()
-        askingPrice()
-        negotiable()
-        shippingOption()
-        condition()
-        usage()
-        description()
-        weight()
-        color()
-        material()
-    }
-
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -77,7 +64,6 @@ class ItemController {
         }
 
         try {
-            item.setUpdatedBy(springSecurityService.getCurrentUser())
             item.setUpdateDate(new Date())
 
             itemService.save(item)

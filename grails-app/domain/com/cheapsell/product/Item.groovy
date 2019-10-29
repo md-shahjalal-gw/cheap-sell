@@ -1,29 +1,31 @@
 package com.cheapsell.product
 
 import com.cheapsell.user.Login
+import grails.compiler.GrailsCompileStatic
 
+@GrailsCompileStatic
 class Item implements Serializable {
 
     private static final long serialVersionUID = 1
-
-    long id
-    long version
 
     String name
     int askingPrice
     boolean negotiable
     ShippingOption shippingOption
-    Condition condition;
-    Usage usage
+    ItemCondition itemCondition;
+    ItemUsage itemUsage
     String description
     int weight
     String color
     String material
 
-    Login createdBy
     Date createDate
-    Login updatedBy
     Date updateDate
+    Login createdBy
+
+    static mapping = {
+        createdBy lazy: false
+    }
 
     static constraints = {
     }

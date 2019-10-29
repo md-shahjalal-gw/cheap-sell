@@ -18,7 +18,7 @@ class UserController {
 
     def index(Integer max) {
         if (!AuthUtils.hasRole(Role.ADMIN)) {
-            render(view: "/accessDenied")
+            redirect(uri: '/login/denied')
         }
 
         params.max = Math.min(max ?: 10, 100)
@@ -31,7 +31,7 @@ class UserController {
 
     def create() {
         if (!AuthUtils.hasRole(Role.ADMIN)) {
-            render(view: "/accessDenied")
+            redirect(uri: '/login/denied')
         }
 
         respond new User(params)
@@ -44,6 +44,7 @@ class UserController {
         }
 
         try {
+            user.setCreateDate(new Date())
             userService.save(user)
         } catch (ValidationException e) {
             respond user.errors, view:'create'
@@ -61,7 +62,7 @@ class UserController {
 
     def edit(Long id) {
         if (!AuthUtils.hasRole(Role.ADMIN) && springSecurityService.getCurrentUserId() != id) {
-            render(view: "/accessDenied")
+            redirect(uri: '/login/denied')
         }
 
         respond userService.get(id)
@@ -74,10 +75,11 @@ class UserController {
         }
 
         if (!AuthUtils.hasRole(Role.ADMIN) && springSecurityService.getCurrentUserId() != user.id) {
-            render(view: "/accessDenied")
+            redirect(uri: '/login/denied')
         }
 
         try {
+            user.setUpdateDate(new Date())
             userService.save(user)
         } catch (ValidationException e) {
             respond user.errors, view:'edit'
@@ -100,7 +102,7 @@ class UserController {
         }
 
         if (!AuthUtils.hasRole(Role.ADMIN)) {
-            render(view: "/accessDenied")
+            redirect(uri: '/login/denied')
         }
 
         userService.delete(id)

@@ -1,11 +1,32 @@
 package com.cheapsell.user
 
-import com.cheapsell.product.Item
-import com.cheapsell.transaction.TransactionHistory
+import grails.compiler.GrailsCompileStatic
 
-class User extends Profile {
+@GrailsCompileStatic
+class User implements Serializable {
 
+    private static final long serialVersionUID = 1
+
+    String firstName
+    String lastName
     double rating
+
+    String contactStreet1
+    String contactStreet2
+    String contactCity
+    String contactZip
+    String contactState
+    String contactEmail
+    String contactPhone
+
+    Date createDate
+    Date updateDate
+
+    Login login
+
+    static mapping = {
+        login lazy: false
+    }
 
     UserProfileType userProfileType
 
