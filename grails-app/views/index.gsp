@@ -30,7 +30,7 @@
                     <li class="controller">
                         <g:link controller="user" action="index">Users</g:link>
                     </li><li class="controller">
-                        <g:link controller="item" action="index">Items</g:link>
+                        <g:link controller="item" action="index">Selling Items List</g:link>
                     </li>
                 </g:if>
                 <g:elseif test="${role == 'buyer'}">
@@ -38,7 +38,7 @@
                         <g:link controller="user" action="edit" id="${id}">Profile</g:link>
                     </li>
                     <li class="controller">
-                        <g:link controller="user" action="edit" id="${id}">Profile</g:link>
+                    <g:link controller="item" action="index">Selling Items List</g:link>
                     </li>
                 </g:elseif>
                 <g:elseif test="${role == 'seller'}">
@@ -46,7 +46,7 @@
                         <g:link controller="user" action="edit" id="${id}">Profile</g:link>
                     </li>
                     <li class="controller">
-                        <g:link controller="item" action="index">Items</g:link>
+                        <g:link controller="item" action="index">Selling Items List</g:link>
                     </li>
                 </g:elseif>
                 <g:else>
