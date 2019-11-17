@@ -49,6 +49,7 @@ dependencies {
     console "org.grails:grails-console"
     compile 'org.grails.plugins:spring-security-core:3.2.3'
     compile 'org.grails.plugins:spring-security-rest:2.0.0.RC1'
+    compile 'org.grails.plugins:fields:3.0.0.RC1'
 
     profile "org.grails.profiles:web"
     runtime "org.glassfish.web:el-impl:2.1.2-b03"

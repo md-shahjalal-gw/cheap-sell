@@ -71,7 +71,7 @@ invokeTag('hasErrors','g',27,['bean':(this.item)],2)
 printHtmlPart(11)
 createTagBody(2, {->
 printHtmlPart(19)
-invokeTag('all','f',30,['bean':("item")],-1)
+invokeTag('field','f',30,['bean':("item"),'property':("name")],-1)
 printHtmlPart(20)
 invokeTag('submitButton','g',33,['name':("create"),'class':("save"),'value':(message(code: 'default.button.create.label', default: 'Create'))],-1)
 printHtmlPart(21)
@@ -87,7 +87,7 @@ protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1572382629000L
+public static final long LAST_MODIFIED = 1573949634000L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'none'

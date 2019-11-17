@@ -50,6 +50,7 @@ dependencies:
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.grails.plugins/spring-security-rest-gorm/2.0.0.RC1/16db16e6e49c5f3c6a1c7170219279aee1cc804a/spring-security-rest-gorm-2.0.0.RC1.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.grails.plugins/spring-security-rest/2.0.0.RC1/f42357a6a5b7725e23d7126ad9afcf353911015d/spring-security-rest-2.0.0.RC1.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.grails.plugins/spring-security-core/3.2.3/b4b937c45c69c062cb05007edd1fc66b06c7c999/spring-security-core-3.2.3.jar
+- file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.grails.plugins/fields/3.0.0.RC1/2db607ead45eda4c732f2a342d2446beeb27d5b6/fields-3.0.0.RC1.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.glassfish.web/el-impl/2.1.2-b03/6bab1211b6e6b191fdbf06067bd05d2f75a62ac0/el-impl-2.1.2-b03.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/com.h2database/h2/1.4.199/7bf08152984ed8859740ae3f97fae6c72771ae45/h2-1.4.199.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jdbc/8.5.43/9c0c77ff013df5407c446ac4f08ccc2c623545b1/tomcat-jdbc-8.5.43.jar
@@ -114,7 +115,6 @@ dependencies:
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/8.5.43/71e8812ef8897a1623116984f4fa40ae7e37ad99/tomcat-embed-el-8.5.43.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.grails.plugins/converters/3.3.1/afc1ea5fa7d7d52e83017856fa5a651d38145048/converters-3.3.1.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.javassist/javassist/3.21.0-GA/598244f595db5c5fb713731eddbb1c91a58d959b/javassist-3.21.0-GA.jar
-- file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.grails.plugins/fields/2.2.8/bfb21b4e1c05db9f105159d12bcac0389b1ac464/fields-2.2.8.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.hibernate.common/hibernate-commons-annotations/5.0.1.Final/71e1cff3fcb20d3b3af4f3363c3ddb24d33c6879/hibernate-commons-annotations-5.0.1.Final.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-validator/5.3.6.Final/4c730be8bf55a8e9a61e79a2f2c079abf48b718/hibernate-validator-5.3.6.Final.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging/3.3.2.Final/3789d00e859632e6c6206adc0c71625559e6e3b0/jboss-logging-3.3.2.Final.jar
@@ -134,11 +134,12 @@ dependencies:
 - file:/home/jalal/.m2/repository/commons-codec/commons-codec/1.10/commons-codec-1.10.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/commons-fileupload/commons-fileupload/1.3.3/4ff14d809195b711fd6bcc87e6777f886730ca1/commons-fileupload-1.3.3.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.8.11.3/844df5aba5a1a56e00905b165b12bb34116ee858/jackson-databind-2.8.11.3.jar
+- file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.grails/scaffolding-core/2.0.0.RC1/f3c780a886128b70101ce0973241424d73aabd08/scaffolding-core-2.0.0.RC1.jar
+- file:/home/jalal/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/3cd63d075497751784b2fa84be59432f4905bf7c/javax.servlet-api-3.1.0.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/javax.el/el-api/2.1.2-b03/1ac087d9d1a632d2ff82fa1e8b6610aca025ff2a/el-api-2.1.2-b03.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-juli/8.5.43/5e0d9d997543f74b2d707a1a616d4b680807ca11/tomcat-juli-8.5.43.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/com.bertramlabs.plugins/asset-pipeline-core/2.15.1/7a03810517c8d4c241c686373f620e3ee92af1e7/asset-pipeline-core-2.15.1.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.gebish/geb-spock/1.1.1/a0df68183a63b505efd6c5f1eaa794cd14b39223/geb-spock-1.1.1.jar
-- file:/home/jalal/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/3cd63d075497751784b2fa84be59432f4905bf7c/javax.servlet-api-3.1.0.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/commons-validator/commons-validator/1.5.1/86d05a46e8f064b300657f751b5a98c62807e2a0/commons-validator-1.5.1.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/8ad72fe39fa8c91eaaf12aadb21e0c3661fe26d5/commons-collections-3.2.2.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.4/5fe28b9518e58819180a43a850fbc0dd24b7c050/commons-lang3-3.4.jar
@@ -154,7 +155,6 @@ dependencies:
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/javax.transaction/jta/1.1/2ca09f0b36ca7d71b762e14ea2ff09d5eac57558/jta-1.1.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-annotations-api/8.5.43/c7bfaa50ed7544d2d1f144a5b2639e3bf8013eeb/tomcat-annotations-api-8.5.43.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-logging-log4j/8.5.2/53bdd1eebc7393713261d178ac096a742423f940/tomcat-embed-logging-log4j-8.5.2.jar
-- file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.grails/scaffolding-core/1.1.1/c79e9bd310896f3afbba331170c54fa2ce7f9a5d/scaffolding-core-1.1.1.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/javax.el/javax.el-api/2.2.4/1287562cc3f0ff5439ded6f2949e73ce1c0edaab/javax.el-api-2.2.4.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.4.01/3789d9fada2d3d458c4ba2de349d48780f381ee3/xml-apis-1.4.01.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/235ba8b489512805ac13a8f9ea77a1ca5ebe3e8/aopalliance-1.0.jar
@@ -164,6 +164,7 @@ dependencies:
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bcpkix-jdk15on/1.55/6392d8cba22b722c6570d660ca0b3921ff1bae4f/bcpkix-jdk15on-1.55.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.8.0/45b426f7796b741035581a176744d91090e2e6fb/jackson-annotations-2.8.0.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.8.11/876ead1db19f0c9e79c9789273a3ef8c6fd6c29b/jackson-core-2.8.11.jar
+- file:/home/jalal/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.3.2/934c04d3cfef185a8008e7bf34331b79730a9d43/javax.annotation-api-1.3.2.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.gebish/geb-test-common/1.1.1/9045f893ff868f68a5df03a67f822b4d2bc4baa7/geb-test-common-1.1.1.jar
 - file:/home/jalal/.m2/repository/junit/junit/4.12/junit-4.12.jar
 - file:/home/jalal/.gradle/caches/modules-2/files-2.1/org.spockframework/spock-spring/1.1-groovy-2.4/ba2e752469f955e76cfdb61cd64a36089619e05f/spock-spring-1.1-groovy-2.4.jar
