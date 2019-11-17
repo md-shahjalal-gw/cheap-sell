@@ -36,6 +36,8 @@ class Item implements Serializable {
         material(size: 2..50)
         itemUsage()
         itemCondition()
+        description(nullable: true, size: 10..200)
         shippingOption()
+        updateDate(nullable: true)
     }
 }

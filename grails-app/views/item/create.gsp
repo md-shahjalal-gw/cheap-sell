@@ -30,7 +30,13 @@
                     <f:field bean="item" property="name"/>
                     <f:field bean="item" property="askingPrice"/>
                     <f:field bean="item" property="negotiable"/>
+                    <f:field bean="item" property="shippingOption"/>
+                    <f:field bean="item" property="itemCondition"/>
+                    <f:field bean="item" property="itemUsage"/>
+                    <f:field bean="item" property="description"/>
+                    <f:field bean="item" property="weight"/>
                     <f:field bean="item" property="color"/>
+                    <f:field bean="item" property="material"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

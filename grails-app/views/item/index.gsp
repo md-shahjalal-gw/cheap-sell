@@ -18,7 +18,22 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${itemList}" />
+
+            <table>
+                <g:each in="${itemList}" var="itm" >
+                    <tr>
+                        <td>
+                            ${itm.name}
+                        </td>
+                        <td>
+                            ${itm.description}
+                        </td>
+                        <td>
+                            ${itm.askingPrice}
+                        </td>
+                    </tr>
+                </g:each>
+            </table>
 
             <div class="pagination">
                 <g:paginate total="${itemCount ?: 0}" />

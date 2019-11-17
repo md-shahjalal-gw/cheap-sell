@@ -73,21 +73,39 @@ createTagBody(2, {->
 printHtmlPart(19)
 invokeTag('field','f',30,['bean':("item"),'property':("name")],-1)
 printHtmlPart(20)
-invokeTag('submitButton','g',33,['name':("create"),'class':("save"),'value':(message(code: 'default.button.create.label', default: 'Create'))],-1)
+invokeTag('field','f',31,['bean':("item"),'property':("askingPrice")],-1)
+printHtmlPart(20)
+invokeTag('field','f',32,['bean':("item"),'property':("negotiable")],-1)
+printHtmlPart(20)
+invokeTag('field','f',33,['bean':("item"),'property':("shippingOption")],-1)
+printHtmlPart(20)
+invokeTag('field','f',34,['bean':("item"),'property':("itemCondition")],-1)
+printHtmlPart(20)
+invokeTag('field','f',35,['bean':("item"),'property':("itemUsage")],-1)
+printHtmlPart(20)
+invokeTag('field','f',36,['bean':("item"),'property':("description")],-1)
+printHtmlPart(20)
+invokeTag('field','f',37,['bean':("item"),'property':("weight")],-1)
+printHtmlPart(20)
+invokeTag('field','f',38,['bean':("item"),'property':("color")],-1)
+printHtmlPart(20)
+invokeTag('field','f',39,['bean':("item"),'property':("material")],-1)
 printHtmlPart(21)
-})
-invokeTag('form','g',35,['resource':(this.item),'method':("POST")],2)
+invokeTag('submitButton','g',42,['name':("create"),'class':("save"),'value':(message(code: 'default.button.create.label', default: 'Create'))],-1)
 printHtmlPart(22)
 })
-invokeTag('captureBody','sitemesh',37,[:],1)
+invokeTag('form','g',44,['resource':(this.item),'method':("POST")],2)
 printHtmlPart(23)
+})
+invokeTag('captureBody','sitemesh',46,[:],1)
+printHtmlPart(24)
 }
 public static final Map JSP_TAGS = new HashMap()
 protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1573949634000L
+public static final long LAST_MODIFIED = 1573955316000L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'none'
