@@ -28,5 +28,14 @@ class Item implements Serializable {
     }
 
     static constraints = {
+        name(size: 3..100)
+        askingPrice(max: 100)
+        negotiable()
+        color(nullable: true)
+        weight(nullable: true)
+        material(size: 2..50)
+        itemUsage()
+        itemCondition()
+        shippingOption()
     }
 }

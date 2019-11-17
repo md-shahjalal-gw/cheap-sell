@@ -21,7 +21,7 @@ class BootStrap {
 
             def u = new User(firstName: 'Jincheg', lastName: 'Young', contactStreet1: '654652 JHHKJ',
                     contactStreet2: 'Apt 1', contactCity: 'DC', contactZip: '20037', contactState: 'DC', rating: 0,
-                    userProfileType: UserProfileType.ADMIN, contactEmail: "jkkjk@jkkjk", contactPhone: '215121',
+                    userProfileType: UserProfileType.ADMIN, contactEmail: "jkkjk@jkkjk.com", contactPhone: '215121',
                     createDate: new Date(), updateDate: new Date()
 
             )
@@ -36,7 +36,7 @@ class BootStrap {
 
             def u = new User(firstName: 'Akinori', lastName: 'Kahata', contactStreet1: '654652 JHHKJ',
                     contactStreet2: 'Apt 1', contactCity: 'DC', contactZip: '20037', contactState: 'DC', rating: 0,
-                    userProfileType: UserProfileType.BUYER, contactEmail: "jkkjk@jkkjk", contactPhone: '215121',
+                    userProfileType: UserProfileType.BUYER, contactEmail: "jkkjk@jkkjk.com", contactPhone: '215121',
                     createDate: new Date(), updateDate: new Date()
             )
             u.setLogin(l)
@@ -50,7 +50,8 @@ class BootStrap {
 
             def u = new User(firstName: 'S', lastName: 'Jay', contactStreet1: '654652 JHHKJ',
                     contactStreet2: 'Apt 1', contactCity: 'DC', contactZip: '20037', contactState: 'DC', rating: 0,
-                    userProfileType: UserProfileType.SELLER, contactEmail: "jkkjk@jkkjk", contactPhone: '215121',
+                    userProfileType: UserProfileType.SELLER, contactEmail: "jkkjk@jkkjk.com     " +
+                    "", contactPhone: '215121',
                     createDate: new Date(), updateDate: new Date()
             )
             u.setLogin(l)
