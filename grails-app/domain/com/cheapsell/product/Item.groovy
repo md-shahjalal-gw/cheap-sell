@@ -10,6 +10,7 @@ class Item implements Serializable {
 
     String name
     int askingPrice
+    int soldPrice
     boolean negotiable
     ShippingOption shippingOption
     ItemCondition itemCondition;
@@ -21,11 +22,8 @@ class Item implements Serializable {
 
     Date createDate
     Date updateDate
-    Login createdBy
 
-    static mapping = {
-        createdBy lazy: false
-    }
+    static belongsTo = [login:Login]
 
     static constraints = {
         name(size: 3..100)

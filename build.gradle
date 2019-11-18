@@ -49,6 +49,8 @@ dependencies {
     console "org.grails:grails-console"
     compile 'org.grails.plugins:spring-security-core:3.2.3'
     compile 'org.grails.plugins:spring-security-rest:2.0.0.RC1'
+    compile 'org.grails.plugins:spring-security-ui:3.1.1'
+    compile 'org.grails.plugins:mail:2.0.0'
     compile 'org.grails.plugins:fields:3.0.0.RC1'
 
     profile "org.grails.profiles:web"

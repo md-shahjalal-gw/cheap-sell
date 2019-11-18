@@ -30,10 +30,6 @@ class UserController {
     }
 
     def create() {
-        if (!AuthUtils.hasRole(Role.ADMIN)) {
-            redirect(uri: '/login/denied')
-        }
-
         respond new User(params)
     }
 
@@ -44,6 +40,7 @@ class UserController {
         }
 
         try {
+            user.setLogin((Login) springSecurityService.getCurrentUser())
             user.setCreateDate(new Date())
             userService.save(user)
         } catch (ValidationException e) {
@@ -61,11 +58,13 @@ class UserController {
     }
 
     def edit(Long id) {
-        if (!AuthUtils.hasRole(Role.ADMIN) && springSecurityService.getCurrentUserId() != id) {
+        def user = userService.get(id);
+
+        if (!AuthUtils.hasRole(Role.ADMIN) && springSecurityService.getCurrentUserId() != user.login.id) {
             redirect(uri: '/login/denied')
         }
 
-        respond userService.get(id)
+        respond user
     }
 
     def update(User user) {
@@ -74,7 +73,7 @@ class UserController {
             return
         }
 
-        if (!AuthUtils.hasRole(Role.ADMIN) && springSecurityService.getCurrentUserId() != user.id) {
+        if (!AuthUtils.hasRole(Role.ADMIN) && springSecurityService.getCurrentUserId() != user.login.id) {
             redirect(uri: '/login/denied')
         }
 

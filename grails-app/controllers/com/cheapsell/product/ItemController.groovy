@@ -1,5 +1,6 @@
 package com.cheapsell.product
 
+import com.cheapsell.user.Login
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.validation.ValidationException
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,9 +16,21 @@ class ItemController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond itemService.list(params), model:[itemCount: itemService.count()]
+    def index(Integer max, Integer option) {
+        def results = null
+
+        def c = Item.createCriteria()
+        if (option == 1) {
+            results = c.list (max: Math.min(max ?: 10, 100)) {
+                ne("login", springSecurityService.currentUser)
+            }
+        } else if (option == 2) {
+            results = c.list (max: Math.min(max ?: 10, 100)) {
+                eq("login", springSecurityService.currentUser)
+            }
+        }
+
+        respond results, model:[itemCount: itemService.count()]
     }
 
     def show(Long id) {
@@ -35,7 +48,7 @@ class ItemController {
         }
 
         try {
-            item.setCreatedBy(springSecurityService.getCurrentUser())
+            item.setLogin((Login) springSecurityService.getCurrentUser())
             item.setCreateDate(new Date())
 
             itemService.save(item)
@@ -54,7 +67,13 @@ class ItemController {
     }
 
     def edit(Long id) {
-        respond itemService.get(id)
+        def item =  itemService.get(id)
+
+        if (item.loginId != springSecurityService.getCurrentUserId()) {
+            redirect(uri: '/login/denied')
+        }
+
+        return item
     }
 
     def update(Item item) {
@@ -63,9 +82,12 @@ class ItemController {
             return
         }
 
+        if (item.loginId != springSecurityService.getCurrentUserId()) {
+            redirect(uri: '/login/denied')
+        }
+
         try {
             item.setUpdateDate(new Date())
-
             itemService.save(item)
         } catch (ValidationException e) {
             respond item.errors, view:'edit'

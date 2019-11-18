@@ -30,27 +30,32 @@
                     <li class="controller">
                         <g:link controller="user" action="index">Users</g:link>
                     </li><li class="controller">
-                        <g:link controller="item" action="index">Selling Items List</g:link>
+                        <g:link controller="item" action="index">Items List</g:link>
                     </li>
                 </g:if>
-                <g:elseif test="${role == 'buyer'}">
+                <g:elseif test="${role == 'user'}">
                     <li class="controller">
-                        <g:link controller="user" action="edit" id="${id}">Profile</g:link>
+                        <g:if test="${userProfile != ''}">
+                            <g:link controller="user" action="edit" id="${userId}">Profile</g:link>
+                        </g:if>
+                        <g:else>
+                            <g:link controller="user" action="create">Profile</g:link>
+                        </g:else>
                     </li>
                     <li class="controller">
-                    <g:link controller="item" action="index">Selling Items List</g:link>
+                        <g:if test="${userProfile == 'BUYER'}">
+                            <g:link controller="item" action="index" params="[option: 2]">Buy Item</g:link>
+                        </g:if>
+                        <g:elseif test="${userProfile == 'SELLER'}">
+                            <g:link controller="item" action="create">Sell Item</g:link>
                     </li>
-                </g:elseif>
-                <g:elseif test="${role == 'seller'}">
                     <li class="controller">
-                        <g:link controller="user" action="edit" id="${id}">Profile</g:link>
-                    </li>
-                    <li class="controller">
-                        <g:link controller="item" action="index">Selling Items List</g:link>
+                            <g:link controller="item" action="index" params="[option: 2]">Update Item</g:link>
+                        </g:elseif>
                     </li>
                 </g:elseif>
                 <g:else>
-                    Please Register or <a href="/login">Login</a>
+                    Please <a href="/register/register">Register</a> or <a href="/login">Login</a>
                 </g:else>
             </ul>
         </div>

@@ -9,7 +9,7 @@
         <a href="#edit-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <li><a class="home" href="${createLink(uri: '/home/index')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
@@ -29,7 +29,19 @@
             <g:form resource="${this.user}" method="PUT">
                 <g:hiddenField name="version" value="${this.user?.version}" />
                 <fieldset class="form">
-                    <f:all bean="user"/>
+                    <f:field bean="user" property="firstName"/>
+                    <f:field bean="user" property="lastName"/>
+                    <f:field bean="user" property="contactPhone"/>
+                    <f:field bean="user" property="userProfileType"/>
+%{--                    <f:display bean="user" property="dateOfBirth">--}%
+%{--                        <g:formatDate format="MM/dd/yyyy" date="${value}"/>--}%
+%{--                    </f:display>--}%
+                    <f:field bean="user" property="contactStreet1"/>
+                    <f:field bean="user" property="contactStreet2"/>
+                    <f:field bean="user" property="contactCity"/>
+                    <f:field bean="user" property="contactState"/>
+                    <f:field bean="user" property="contactZip"/>
+                    <f:field bean="user" property="rating"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

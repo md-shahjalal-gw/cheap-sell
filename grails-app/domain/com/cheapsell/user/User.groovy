@@ -9,6 +9,7 @@ class User implements Serializable {
 
     String firstName
     String lastName
+    Date dateOfBirth
     double rating
 
     String contactStreet1
@@ -16,22 +17,23 @@ class User implements Serializable {
     String contactCity
     String contactZip
     String contactState
-    String contactEmail
     String contactPhone
 
     Date createDate
     Date updateDate
 
     Login login
+    UserProfileType userProfileType
 
     static mapping = {
         login lazy: false
     }
 
-    UserProfileType userProfileType
-
     static constraints = {
-        contactEmail(email: true, blank: false)
+        contactStreet2(nullable: true)
+        rating(nullable: true)
         updateDate(nullable: true)
+        dateOfBirth(nullable: true)
+        contactPhone(nullable: true)
     }
 }
