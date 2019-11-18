@@ -1,6 +1,10 @@
 package com.cheapsell.product
 
+import com.cheapsell.AuthUtils
 import com.cheapsell.user.Login
+import com.cheapsell.user.Role
+import com.cheapsell.user.User
+import com.cheapsell.user.UserProfileType
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.validation.ValidationException
 import org.springframework.beans.factory.annotation.Autowired
@@ -16,25 +20,33 @@ class ItemController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max, Integer option) {
+    def index(Integer max) {
         def results = null
 
         def c = Item.createCriteria()
-        if (option == 1) {
+        def userProfileType = User.findByLogin(springSecurityService.getCurrentUser())?.userProfileType
+
+        if (userProfileType == UserProfileType.BUYER) {
             results = c.list (max: Math.min(max ?: 10, 100)) {
                 ne("login", springSecurityService.currentUser)
             }
-        } else if (option == 2) {
+        } else if (userProfileType == UserProfileType.SELLER) {
             results = c.list (max: Math.min(max ?: 10, 100)) {
                 eq("login", springSecurityService.currentUser)
             }
+        } else if (AuthUtils.hasRole(Role.ADMIN)) {
+            results = Item.list(max: Math.min(max ?: 10, 100))
         }
 
         respond results, model:[itemCount: itemService.count()]
     }
 
     def show(Long id) {
-        respond itemService.get(id)
+        def item = itemService.get(id)
+
+        def isInCart = CartItem.findByItem(item) != null
+
+        render(view:"show", model: [item: item, isInCart: isInCart]);
     }
 
     def create() {
@@ -73,7 +85,7 @@ class ItemController {
             redirect(uri: '/login/denied')
         }
 
-        return item
+        respond item
     }
 
     def update(Item item) {

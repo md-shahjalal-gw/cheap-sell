@@ -9,8 +9,7 @@ class Item implements Serializable {
     private static final long serialVersionUID = 1
 
     String name
-    int askingPrice
-    int soldPrice
+    int price
     boolean negotiable
     ShippingOption shippingOption
     ItemCondition itemCondition;
@@ -27,7 +26,6 @@ class Item implements Serializable {
 
     static constraints = {
         name(size: 3..100)
-        askingPrice(max: 100)
         negotiable()
         color(nullable: true)
         weight(nullable: true)

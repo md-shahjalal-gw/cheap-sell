@@ -5,7 +5,7 @@ import com.cheapsell.user.Login
 class Cart {
 
     int items
-    int price
+    int totalPrice
 
     static hasMany = [items:Item]
     static belongsTo = [login: Login]

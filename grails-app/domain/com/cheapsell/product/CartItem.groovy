@@ -5,22 +5,24 @@ import grails.compiler.GrailsCompileStatic
 import org.codehaus.groovy.util.HashCodeHelper
 
 @GrailsCompileStatic
-class SoldItem implements Serializable {
+class CartItem implements Serializable {
 
     private static final long serialVersionUID = 1
 
     Item item
+    Cart cart
     int price
-    Date purchaseDate
+    String name
+    Date dateAdded
 
-    static belongsTo = [login:Login, item:Item]
+    static belongsTo = [login:Login, item:Item, cart: Cart]
 
     static constraints = {
     }
 
     @Override
     boolean equals(other) {
-        if (other instanceof SoldItem) {
+        if (other instanceof CartItem) {
             other.itemId == item?.id
         }
     }

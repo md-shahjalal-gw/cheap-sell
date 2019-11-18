@@ -44,13 +44,13 @@
                     </li>
                     <li class="controller">
                         <g:if test="${userProfile == 'BUYER'}">
-                            <g:link controller="item" action="index" params="[option: 2]">Buy Item</g:link>
+                            <g:link controller="item" action="index">Buy Item</g:link>
                         </g:if>
                         <g:elseif test="${userProfile == 'SELLER'}">
                             <g:link controller="item" action="create">Sell Item</g:link>
                     </li>
                     <li class="controller">
-                            <g:link controller="item" action="index" params="[option: 2]">Update Item</g:link>
+                            <g:link controller="item" action="index">Update Item</g:link>
                         </g:elseif>
                     </li>
                 </g:elseif>
