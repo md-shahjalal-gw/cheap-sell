@@ -2,17 +2,17 @@ package com.cheapsell.product
 
 import com.cheapsell.user.Login
 
-class Cart {
+class SoldItem {
 
     private static final long serialVersionUID = 1
 
-    int items
-    int totalPrice
+    Item item
+    Date purchaseDate
+    Login buyer
 
-    static hasMany = [items:Item]
-    static belongsTo = [login: Login]
+    static belongsTo = [buyer: Login, item: Item]
 
     static constraints = {
-
+        item unique: true
     }
 }

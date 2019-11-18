@@ -17,6 +17,8 @@ class CartController {
 
         cartService.addToCart(item)
 
+        flash.message = item.name + " Successfully Added to Cart"
+
         redirect(Item.get(item.id))
     }
 
@@ -25,6 +27,18 @@ class CartController {
 
         cartService.removeFromCart(item)
 
+        flash.message = item.name + " Successfully Removed from Cart"
+
         redirect(Item.get(item.id))
+    }
+
+    def buyNow = {
+        Item item = Item.get(params.id)
+
+        cartService.purchase(item)
+
+        flash.message = "Purchase Successful"
+
+        redirect(uri: '/item/index')
     }
 }

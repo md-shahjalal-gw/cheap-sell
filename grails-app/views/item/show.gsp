@@ -24,14 +24,18 @@
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.item}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 
-                    <g:if test="${isInCart}">
-                        <g:link controller="cart" action="removeFromCart" params="[id: this.item.id]">Remove from Cart</g:link>
+                    <g:if test="${!ownItem}">
+                        <g:if test="${isInCart}">
+                            <g:link controller="cart" action="removeFromCart" params="[id: this.item.id]">Remove from Cart</g:link>
+                        </g:if>
+                        <g:else>
+                            <g:link controller="cart" action="buyNow" params="[id: this.item.id]">Buy Now</g:link>
+                            <g:link controller="cart" action="addToCart" params="[id: this.item.id]">Add to Cart</g:link>
+                        </g:else>
                     </g:if>
                     <g:else>
-                        <g:link controller="cart" action="addToCart" params="[id: this.item.id]">Add to Cart</g:link>
+                        <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                     </g:else>
-
-                    <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </fieldset>
             </g:form>
         </div>

@@ -11,6 +11,9 @@ class CartService {
     @Autowired
     SpringSecurityService springSecurityService
 
+    @Autowired
+    ItemService itemService
+
     def getCardByLogin() {
         Login login = (Login) springSecurityService.getCurrentUser()
 
@@ -59,5 +62,28 @@ class CartService {
 
     def delete(CartItem cartItem) {
         cartItem.delete(flush: true)
+    }
+
+    def purchaseAll() {
+        Login login = (Login) springSecurityService.getCurrentUser()
+
+        def cartItems = CartItem.findAllByLogin(login)
+        for (CartItem cartItem : (cartItems)) {
+            def item = cartItem.item
+
+            purchase(item)
+
+            removeFromCart(item)
+        }
+    }
+
+    def purchase(Item item) {
+        Login login = (Login) springSecurityService.getCurrentUser()
+
+        item.setSold(true)
+        itemService.save(item)
+
+        def soldItem = new SoldItem(item: item, buyer: login, purchaseDate: new Date())
+        soldItem.save(flush: true)
     }
 }

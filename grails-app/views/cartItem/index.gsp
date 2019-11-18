@@ -23,6 +23,10 @@
             <div class="pagination">
                 <g:paginate total="${cartItemCount ?: 0}" />
             </div>
+
+            <fieldset class="buttons">
+                <g:link controller="cartItem" action="checkout">Checkout</g:link>
+            </fieldset>
         </div>
     </body>
 </html>

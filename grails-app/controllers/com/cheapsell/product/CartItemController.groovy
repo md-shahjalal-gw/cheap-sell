@@ -9,6 +9,9 @@ class CartItemController {
     @Autowired
     SpringSecurityService springSecurityService
 
+    @Autowired
+    CartService cartService;
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         params.login = (Login) springSecurityService.currentUser
@@ -22,4 +25,13 @@ class CartItemController {
 //
 //        respond results, model:[cartItemCount: results.count()]
     }
+
+    def checkout() {
+        cartService.purchaseAll()
+
+        flash.message = "Transaction Successful"
+
+        redirect(uri: '/item/index')
+    }
+
 }

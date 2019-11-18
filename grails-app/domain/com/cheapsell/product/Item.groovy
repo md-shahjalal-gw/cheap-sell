@@ -18,6 +18,7 @@ class Item implements Serializable {
     int weight
     String color
     String material
+    boolean sold
 
     Date createDate
     Date updateDate

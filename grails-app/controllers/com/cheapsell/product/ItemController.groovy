@@ -29,10 +29,18 @@ class ItemController {
         if (userProfileType == UserProfileType.BUYER) {
             results = c.list (max: Math.min(max ?: 10, 100)) {
                 ne("login", springSecurityService.currentUser)
+                and {
+                    eq("sold", false)
+                }
+                order("name", "asc")
             }
         } else if (userProfileType == UserProfileType.SELLER) {
             results = c.list (max: Math.min(max ?: 10, 100)) {
                 eq("login", springSecurityService.currentUser)
+                and {
+                    eq("sold", false)
+                }
+                order("name", "asc")
             }
         } else if (AuthUtils.hasRole(Role.ADMIN)) {
             results = Item.list(max: Math.min(max ?: 10, 100))
@@ -44,9 +52,10 @@ class ItemController {
     def show(Long id) {
         def item = itemService.get(id)
 
-        def isInCart = CartItem.findByItem(item) != null
+        def ownItem = item.login.id == springSecurityService.currentUserId
+        def isInCart = !ownItem && CartItem.findByItem(item) != null
 
-        render(view:"show", model: [item: item, isInCart: isInCart]);
+        render(view:"show", model: [item: item, isInCart: isInCart, ownItem: ownItem]);
     }
 
     def create() {
@@ -60,6 +69,7 @@ class ItemController {
         }
 
         try {
+            item.setSold(false)
             item.setLogin((Login) springSecurityService.getCurrentUser())
             item.setCreateDate(new Date())
 
