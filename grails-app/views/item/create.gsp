@@ -25,7 +25,7 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.item}" method="POST">
+            <g:form resource="${this.item}" method="POST" enctype="multipart/form-data">
                 <fieldset class="form">
                     <f:field bean="item" property="name"/>
                     <f:field bean="item" property="price"/>
@@ -37,6 +37,11 @@
                     <f:field bean="item" property="weight"/>
                     <f:field bean="item" property="color"/>
                     <f:field bean="item" property="material"/>
+                    <div class="fieldcontain required">
+                        <label>Image</label>
+                        <span class="required-indicator"></span>
+                        <input type="file" id="itemImage" name="itemImage"/>
+                    </div>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

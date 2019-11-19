@@ -26,7 +26,7 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.item}" method="PUT">
+            <g:form resource="${this.item}" method="POST" enctype="multipart/form-data">
                 <g:hiddenField name="version" value="${this.item?.version}" />
                 <fieldset class="form">
                     <f:field bean="item" property="name"/>
@@ -39,6 +39,11 @@
                     <f:field bean="item" property="weight"/>
                     <f:field bean="item" property="color"/>
                     <f:field bean="item" property="material"/>
+                    <div class="fieldcontain required">
+                        <label>Image</label>
+                        <span class="required-indicator"></span>
+                        <input type="file" id="itemImage" name="itemImage"/>
+                    </div>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

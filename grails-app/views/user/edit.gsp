@@ -39,7 +39,7 @@
                     <f:field bean="user" property="contactCity"/>
                     <f:field bean="user" property="contactState"/>
                     <f:field bean="user" property="contactZip"/>
-                    <f:field bean="user" property="rating"/>
+%{--                    <f:field bean="user" property="rating"/>--}%
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

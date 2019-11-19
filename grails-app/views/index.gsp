@@ -19,10 +19,6 @@
     <section class="row colset-2-its">
         <h1>Welcome ${user} to Cheap Sell</h1>
 
-        <p>
-            Its a $100 furniture shop. Buy and sell used furniture within $100.
-        </p>
-
         <div id="controllers" role="navigation">
             <h2></h2>
             <ul>

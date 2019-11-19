@@ -19,7 +19,50 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="item" property="name"/>
+
+            <g:if test="${item?.imageBytes}">
+                <div class="fieldcontain required">
+                    <label>&nbsp;</label>
+                    <img src="${createLink(controller:'item', action: 'showImage', id: "${item.id}")}" width='300'/>
+                </div>
+            </g:if>
+
+            <div class="fieldcontain required">
+                <label>Name:</label>${item?.name}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Price:</label>${item?.price}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Shipping Option:</label>${item?.shippingOption}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Item Condition:</label>${item?.itemCondition}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Item Usage:</label>${item?.itemUsage}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Description:</label>${item?.description}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Weight:</label>${item?.weight}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Color:</label>${item?.color}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Material:</label>${item?.material}
+            </div>
+
             <g:form resource="${this.item}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.item}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

@@ -25,13 +25,15 @@ class User implements Serializable {
     Login login
     UserProfileType userProfileType
 
+    static hasMany = [creditInformation: CreditInformation]
+
     static mapping = {
         login lazy: false
     }
 
     static constraints = {
         contactStreet2(nullable: true)
-        rating(nullable: true)
+        rating(nullable: true, range: 0..5)
         updateDate(nullable: true)
         dateOfBirth(nullable: true)
         contactPhone(nullable: true)

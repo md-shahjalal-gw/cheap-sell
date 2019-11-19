@@ -18,7 +18,7 @@ class ItemController {
 
     ItemService itemService
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
         def results = null
@@ -27,7 +27,7 @@ class ItemController {
         def userProfileType = User.findByLogin(springSecurityService.getCurrentUser())?.userProfileType
 
         if (userProfileType == UserProfileType.BUYER) {
-            results = c.list (max: Math.min(max ?: 10, 100)) {
+            results = c.list(max: Math.min(max ?: 10, 100)) {
                 ne("login", springSecurityService.currentUser)
                 and {
                     eq("sold", false)
@@ -35,7 +35,7 @@ class ItemController {
                 order("name", "asc")
             }
         } else if (userProfileType == UserProfileType.SELLER) {
-            results = c.list (max: Math.min(max ?: 10, 100)) {
+            results = c.list(max: Math.min(max ?: 10, 100)) {
                 eq("login", springSecurityService.currentUser)
                 and {
                     eq("sold", false)
@@ -46,7 +46,7 @@ class ItemController {
             results = Item.list(max: Math.min(max ?: 10, 100))
         }
 
-        respond results, model:[itemCount: itemService.count()]
+        respond results, model: [itemCount: itemService.count()]
     }
 
     def show(Long id) {
@@ -55,7 +55,7 @@ class ItemController {
         def ownItem = item.login.id == springSecurityService.currentUserId
         def isInCart = !ownItem && CartItem.findByItem(item) != null
 
-        render(view:"show", model: [item: item, isInCart: isInCart, ownItem: ownItem]);
+        render(view: "show", model: [item: item, isInCart: isInCart, ownItem: ownItem]);
     }
 
     def create() {
@@ -69,13 +69,21 @@ class ItemController {
         }
 
         try {
+            def uploadedFile = request.getFile('itemImage')
+
+            if (uploadedFile != null) {
+                item.imageBytes = uploadedFile.getBytes()
+                item.imageName = uploadedFile.originalFilename
+                item.imageContentType = uploadedFile.contentType
+            }
+
             item.setSold(false)
             item.setLogin((Login) springSecurityService.getCurrentUser())
             item.setCreateDate(new Date())
 
             itemService.save(item)
         } catch (ValidationException e) {
-            respond item.errors, view:'create'
+            respond item.errors, view: 'create'
             return
         }
 
@@ -88,8 +96,14 @@ class ItemController {
         }
     }
 
+    def showImage(Item item) {
+        response.outputStream << item.imageBytes
+        response.outputStream.flush()
+    }
+
+
     def edit(Long id) {
-        def item =  itemService.get(id)
+        def item = itemService.get(id)
 
         if (item.loginId != springSecurityService.getCurrentUserId()) {
             redirect(uri: '/login/denied')
@@ -109,10 +123,18 @@ class ItemController {
         }
 
         try {
+            def uploadedFile = request.getFile('itemImage')
+
+            if (uploadedFile != null) {
+                item.imageBytes = uploadedFile.getBytes()
+                item.imageName = uploadedFile.originalFilename
+                item.imageContentType = uploadedFile.contentType
+            }
+
             item.setUpdateDate(new Date())
             itemService.save(item)
         } catch (ValidationException e) {
-            respond item.errors, view:'edit'
+            respond item.errors, view: 'edit'
             return
         }
 
@@ -121,7 +143,7 @@ class ItemController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'item.label', default: 'Item'), item.id])
                 redirect item
             }
-            '*'{ respond item, [status: OK] }
+            '*' { respond item, [status: OK] }
         }
     }
 
@@ -136,9 +158,9 @@ class ItemController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'item.label', default: 'Item'), id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -148,7 +170,7 @@ class ItemController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'item.label', default: 'Item'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

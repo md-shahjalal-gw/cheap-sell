@@ -13,6 +13,7 @@ class Item implements Serializable {
     boolean negotiable
     ShippingOption shippingOption
     ItemCondition itemCondition;
+    Date purchaseDate
     ItemUsage itemUsage
     String description
     int weight
@@ -22,6 +23,11 @@ class Item implements Serializable {
 
     Date createDate
     Date updateDate
+
+    byte[] imageBytes
+    String imageName
+    String imageContentType
+
 
     static belongsTo = [login:Login]
 
@@ -33,8 +39,13 @@ class Item implements Serializable {
         material(size: 2..50)
         itemUsage()
         itemCondition()
-        description(nullable: true, size: 10..200)
+        description(nullable: true, size: 5..200)
         shippingOption()
         updateDate(nullable: true)
+        purchaseDate(nullable: true)
+
+        imageBytes(nullable: true, maxSize:26214400)
+        imageContentType(nullable: true, blank: true)
+        imageName(blank:true, nullable:true)
     }
 }

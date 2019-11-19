@@ -25,7 +25,9 @@
             </div>
 
             <fieldset class="buttons">
-                <g:link controller="cartItem" action="checkout">Checkout</g:link>
+                <g:if test="${cartItemCount > 0}">
+                    <g:link controller="cartItem" action="checkout">Checkout</g:link>
+                </g:if>
             </fieldset>
         </div>
     </body>

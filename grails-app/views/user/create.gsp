@@ -30,15 +30,12 @@
                 <f:field bean="user" property="lastName"/>
                 <f:field bean="user" property="contactPhone"/>
                 <f:field bean="user" property="userProfileType"/>
-            %{--                    <f:display bean="user" property="dateOfBirth">--}%
-            %{--                        <g:formatDate format="MM/dd/yyyy" date="${value}"/>--}%
-            %{--                    </f:display>--}%
+                <f:field bean="user" property="dateOfBirth"/>
                 <f:field bean="user" property="contactStreet1"/>
                 <f:field bean="user" property="contactStreet2"/>
                 <f:field bean="user" property="contactCity"/>
                 <f:field bean="user" property="contactState"/>
                 <f:field bean="user" property="contactZip"/>
-                <f:field bean="user" property="rating"/>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>

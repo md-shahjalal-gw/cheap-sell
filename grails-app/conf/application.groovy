@@ -1,4 +1,10 @@
 grails {
+    controllers {
+        upload {
+            maxFileSize: 26214400
+            maxRequestSize: 26214400
+        }
+    }
     gorm {
         autowire: true
     }
