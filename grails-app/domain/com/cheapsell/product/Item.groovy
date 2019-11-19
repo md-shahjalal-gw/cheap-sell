@@ -10,6 +10,7 @@ class Item implements Serializable {
 
     String name
     int price
+    Integer originalPrice
     boolean negotiable
     ShippingOption shippingOption
     ItemCondition itemCondition;
@@ -34,6 +35,7 @@ class Item implements Serializable {
     static constraints = {
         name(size: 3..100)
         price(min: 0, max: 100)
+        originalPrice(nullable: true)
         negotiable()
         color(nullable: true)
         weight(nullable: true)

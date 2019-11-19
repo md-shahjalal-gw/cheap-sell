@@ -99,7 +99,7 @@ dataSource:
 environments:
     development:
         dataSource:
-            dbCreate: update
+            dbCreate: create-drop
             url: jdbc:mysql://localhost/cheapsell?useSSL=false&autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8
     test:
         dataSource:

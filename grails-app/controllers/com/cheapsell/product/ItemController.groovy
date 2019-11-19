@@ -1,6 +1,7 @@
 package com.cheapsell.product
 
 import com.cheapsell.AuthUtils
+import com.cheapsell.Utils
 import com.cheapsell.user.Login
 import com.cheapsell.user.Role
 import com.cheapsell.user.User
@@ -15,6 +16,9 @@ class ItemController {
 
     @Autowired
     SpringSecurityService springSecurityService
+
+    @Autowired
+    ItemEmailService itemEmailService
 
     ItemService itemService
 
@@ -57,11 +61,16 @@ class ItemController {
 
     def show(Long id) {
         def item = itemService.get(id)
+        def estimatedPrice = null
+
+        if (item.purchaseDate != null && item.originalPrice != null) {
+            estimatedPrice = Utils.estimatedPrice(item.originalPrice, item.purchaseDate, item.itemCondition, item.itemUsage)
+        }
 
         def ownItem = item.login.id == springSecurityService.currentUserId
         def isInCart = !ownItem && CartItem.findByItem(item) != null
 
-        render(view: "show", model: [item: item, isInCart: isInCart, ownItem: ownItem]);
+        render(view: "show", model: [item: item, isInCart: isInCart, ownItem: ownItem, estimatedPrice: estimatedPrice]);
     }
 
     def create() {
@@ -88,6 +97,8 @@ class ItemController {
             item.setCreateDate(new Date())
 
             itemService.save(item)
+
+            itemEmailService.sendAvailableNotification(item)
         } catch (ValidationException e) {
             respond item.errors, view: 'create'
             return

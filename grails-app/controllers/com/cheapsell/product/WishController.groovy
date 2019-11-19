@@ -1,9 +1,15 @@
 package com.cheapsell.product
 
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.validation.ValidationException
+import org.springframework.beans.factory.annotation.Autowired
+
 import static org.springframework.http.HttpStatus.*
 
 class WishController {
+
+    @Autowired
+    SpringSecurityService springSecurityService
 
     WishService wishService
 
@@ -19,7 +25,10 @@ class WishController {
     }
 
     def create() {
-        respond new Wish(params)
+        def wish = new Wish(params)
+        wish.setLogin(springSecurityService.getCurrentUser())
+
+        respond wish
     }
 
     def save(Wish wish) {
@@ -29,6 +38,7 @@ class WishController {
         }
 
         try {
+            wish.setLogin(springSecurityService.getCurrentUser())
             wishService.save(wish)
         } catch (ValidationException e) {
             respond wish.errors, view:'create'

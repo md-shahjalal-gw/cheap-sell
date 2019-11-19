@@ -1,14 +1,42 @@
 package com.cheapsell
 
+import com.cheapsell.product.ItemCondition
+import com.cheapsell.product.ItemUsage
 import com.smartystreets.api.StaticCredentials;
 import com.smartystreets.api.exceptions.SmartyException;
 import com.smartystreets.api.us_street.*;
 import com.smartystreets.api.ClientBuilder;
 import groovy.transform.CompileStatic
+import org.joda.time.DateTime
+import org.joda.time.Years
+
+import java.time.LocalDate
 
 @CompileStatic
 class Utils {
 
+    public static int estimatedPrice(int originalPrice, Date purchaseDate, ItemCondition itemCondition, ItemUsage itemUsage) {
+        int estimatedPrice = originalPrice
+        Years age = Years.yearsBetween(new DateTime(purchaseDate), new DateTime());
+
+        for (int i = 0; i < age.getYears(); i++) {
+            estimatedPrice = (int) (estimatedPrice * 0.8)
+        }
+
+        if (itemCondition == ItemCondition.USED) {
+            estimatedPrice = (int) (estimatedPrice * 0.7)
+        }
+
+        if (itemUsage == ItemUsage.NONE) {
+            estimatedPrice = (int) (estimatedPrice * 0.9)
+        } else if (itemUsage == ItemUsage.MODERATE) {
+            estimatedPrice = (int) (estimatedPrice * 0.7)
+        } else if (itemUsage == ItemUsage.HEAVY) {
+            estimatedPrice = (int) (estimatedPrice * 0.5)
+        }
+
+        return estimatedPrice
+    }
     public static String validateAddress(String cardHolder, String address1, String address2, String city, String state, String zip) {
         StaticCredentials credentials = new StaticCredentials("8ab10d0a-64a1-85a6-daea-bfb229e2bf1c", "Bx7X5x9y9Xf0t5dWkbJF");
         Client client = new ClientBuilder(credentials).buildUsStreetApiClient();

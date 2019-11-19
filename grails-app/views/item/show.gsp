@@ -63,6 +63,20 @@
                 <label>Material:</label>${item?.material}
             </div>
 
+            <div class="fieldcontain required">
+                <label>Purchase Date:</label><g:formatDate format="MM/dd/yyyy" date="${item?.purchaseDate}"/>
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Original Price:</label>${item?.originalPrice}
+            </div>
+
+            <g:if test="${!ownItem && estimatedPrice != null}">
+                <div class="fieldcontain required">
+                    <label>Estimated Price:</label>${estimatedPrice}
+                </div>
+            </g:if>
+
             <g:form resource="${this.item}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.item}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

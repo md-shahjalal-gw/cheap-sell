@@ -39,6 +39,8 @@
                     <f:field bean="item" property="weight"/>
                     <f:field bean="item" property="color"/>
                     <f:field bean="item" property="material"/>
+                    <f:field bean="item" property="purchaseDate"/>
+                    <f:field bean="item" property="originalPrice"/>
                     <div class="fieldcontain required">
                         <label>Image</label>
                         <span class="required-indicator"></span>
