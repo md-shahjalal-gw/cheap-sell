@@ -40,6 +40,9 @@
                     <li class="controller">
                         <g:if test="${userProfile == 'BUYER'}">
                             <g:link controller="item" action="index">Buy Item</g:link>
+                            </li>
+                                <g:link controller="wish" action="index">Wish List</g:link>
+                            <li class="controller">
                         </g:if>
                         <g:elseif test="${userProfile == 'SELLER'}">
                             <g:link controller="item" action="create">Sell Item</g:link>
