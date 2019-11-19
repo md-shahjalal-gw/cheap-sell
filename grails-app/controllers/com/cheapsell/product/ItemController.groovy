@@ -31,6 +31,9 @@ class ItemController {
                 ne("login", springSecurityService.currentUser)
                 and {
                     eq("sold", false)
+                    if (params.query) {
+                        ilike("name", "%${params.query}%")
+                    }
                 }
                 order("name", "asc")
             }
@@ -39,6 +42,9 @@ class ItemController {
                 eq("login", springSecurityService.currentUser)
                 and {
                     eq("sold", false)
+                    if (params.query) {
+                        ilike("name", "%${params.query}%")
+                    }
                 }
                 order("name", "asc")
             }

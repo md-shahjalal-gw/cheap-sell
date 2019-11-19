@@ -53,6 +53,22 @@
                 <g:else>
                     Please <a href="/register/register">Register</a> or <a href="/login">Login</a>
                 </g:else>
+
+                <ul>
+                    <g:each in="${itemList}" var="item">
+                        <li>
+                            <g:link action="show" id="${item.id}">
+                                <img src="${createLink(controller:'item', action: 'showImage', id: "${item.id}")}" width="200" height="200" class="product-image"/>
+                            </g:link>
+                            <span class="product-details">
+                                <p class="product-description">
+                                    ${item.name}, Price: $${item.price}
+                                </p>
+                            </span>
+                        </li>
+                    </g:each>
+                </ul>
+
             </ul>
         </div>
     </section>

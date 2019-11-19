@@ -31,10 +31,6 @@ class BootStrap {
             l.save()
             new LoginRole(login: l, role: Role.findByAuthority(Role.USER)).save(flush: true)
         }
-
-        assert Role.count() == 2
-        assert Login.count() == 3
-        assert LoginRole.count() == 3
     }
     def destroy = {
     }
