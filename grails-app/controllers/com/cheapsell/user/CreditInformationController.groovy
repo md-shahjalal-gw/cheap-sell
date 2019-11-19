@@ -1,17 +1,27 @@
 package com.cheapsell.user
 
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.validation.ValidationException
+import org.springframework.beans.factory.annotation.Autowired
+
 import static org.springframework.http.HttpStatus.*
 
 class CreditInformationController {
+
+    @Autowired
+    SpringSecurityService springSecurityService
 
     CreditInformationService creditInformationService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond creditInformationService.list(params), model:[creditInformationCount: creditInformationService.count()]
+        def c = CreditInformation.createCriteria()
+        def results = c.list(max: Math.min(max ?: 10, 100)) {
+            eq("login", springSecurityService.currentUser)
+        }
+
+        respond results, model:[creditInformationCount: creditInformationService.count()]
     }
 
     def show(Long id) {
@@ -29,6 +39,7 @@ class CreditInformationController {
         }
 
         try {
+            creditInformation.setLogin(springSecurityService.getCurrentUser())
             creditInformationService.save(creditInformation)
         } catch (ValidationException e) {
             respond creditInformation.errors, view:'create'

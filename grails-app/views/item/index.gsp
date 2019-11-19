@@ -15,20 +15,46 @@
         </div>
         <div id="list-item" class="content scaffold-list" role="main">
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+
+            <fieldset class="form">
+                <g:form action="index" method="GET">
+                    <fieldset class="form">
+                        <label for="query">Search:</label>
+                        <g:textField name="query" value="${params.query}"/>
+                    </fieldset>
+                </g:form>
+            </fieldset>
+
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
 
-            <fieldset class="form">
-                <g:form action="index" method="GET">
-                    <div class="fieldcontain">
-                        <label for="query">Search Item:</label>
-                        <g:textField name="query" value="${params.query}"/>
-                    </div>
-                </g:form>
-            </fieldset>
+            <table>
+                <tr>
+                    <g:each in="${itemList}" var="item" status="i">
+                        <g:if test="${i % 5 == 0}">
+                            </tr>
+                            <tr>
+                        </g:if>
+                        <td style="text-align: center;">
+                            <g:link controller="item" action="show" id="${item.id}">
+                                <img src="${createLink(controller:'item', action: 'showImage', id: "${item.id}")}" width="200" height="200" class="product-image"/>
+                            </g:link>
+                            <span class="product-details">
+                                <p class="product-description">
+                                    ${item.name}, Price: $${item.price} <br>
+                                    ${item.description}
+                                    <g:if test="${item.price == 0}">
+                                        <font color="red">Free!</font>
+                                    </g:if>
+                                </p>
+                            </span>
+                        </td>
+                    </g:each>
+                </tr>
+            </table>
 
-            <f:table collection="${itemList}" properties="name, itemUsage, description, price"/>
+%{--            <f:table collection="${itemList}" properties="name, itemUsage, description, price"/>--}%
 
             <div class="pagination">
                 <g:paginate total="${itemCount ?: 0}" />

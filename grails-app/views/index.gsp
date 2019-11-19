@@ -20,8 +20,7 @@
         <h1>Welcome ${user} to Cheap Sell</h1>
 
         <div id="controllers" role="navigation">
-            <h2></h2>
-            <ul>
+            <ul class="nav navbar-nav ml-auto">
                 <g:if test="${role == 'admin'}">
                     <li class="controller">
                         <g:link controller="user" action="index">Users</g:link>
@@ -49,26 +48,13 @@
                             <g:link controller="item" action="index">Update Item</g:link>
                         </g:elseif>
                     </li>
+                    <li class="controller">
+                        <g:link controller="creditInformation" action="index">Credit Information</g:link>
+                    </li>
                 </g:elseif>
                 <g:else>
                     Please <a href="/register/register">Register</a> or <a href="/login">Login</a>
                 </g:else>
-
-                <ul>
-                    <g:each in="${itemList}" var="item">
-                        <li>
-                            <g:link action="show" id="${item.id}">
-                                <img src="${createLink(controller:'item', action: 'showImage', id: "${item.id}")}" width="200" height="200" class="product-image"/>
-                            </g:link>
-                            <span class="product-details">
-                                <p class="product-description">
-                                    ${item.name}, Price: $${item.price}
-                                </p>
-                            </span>
-                        </li>
-                    </g:each>
-                </ul>
-
             </ul>
         </div>
     </section>

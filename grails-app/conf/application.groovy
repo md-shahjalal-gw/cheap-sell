@@ -75,6 +75,7 @@ grails {
                     [pattern: '/home/**',               access: ['ROLE_USER', 'ROLE_ADMIN']],
                     [pattern: '/user/**',               access: ['ROLE_USER', 'ROLE_ADMIN']],
                     [pattern: '/item/**',               access: ['ROLE_USER', 'ROLE_ADMIN']],
+                    [pattern: '/creditInformation/**',               access: ['ROLE_USER', 'ROLE_ADMIN']],
                     [pattern: '/cartItem/**',               access: ['ROLE_USER', 'ROLE_ADMIN']],
                     [pattern: '/cart/**',               access: ['ROLE_USER', 'ROLE_ADMIN']]
             ]

@@ -35,7 +35,7 @@ class ItemController {
                         ilike("name", "%${params.query}%")
                     }
                 }
-                order("name", "asc")
+                order("createDate", "desc")
             }
         } else if (userProfileType == UserProfileType.SELLER) {
             results = c.list(max: Math.min(max ?: 10, 100)) {
@@ -46,7 +46,7 @@ class ItemController {
                         ilike("name", "%${params.query}%")
                     }
                 }
-                order("name", "asc")
+                order("createDate", "desc")
             }
         } else if (AuthUtils.hasRole(Role.ADMIN)) {
             results = Item.list(max: Math.min(max ?: 10, 100))

@@ -1,11 +1,10 @@
 package com.cheapsell
 
+import com.cheapsell.product.Item
 import com.cheapsell.user.Login
 import com.cheapsell.user.Role
 import com.cheapsell.user.User
-import com.cheapsell.user.UserService
 import grails.plugin.springsecurity.SpringSecurityService
-import grails.plugin.springsecurity.SpringSecurityUtils
 import org.springframework.beans.factory.annotation.Autowired
 
 class HomeController {
@@ -16,6 +15,7 @@ class HomeController {
     def index() {
         def role = ''
         def userProfile = ''
+        def itemList = Item.findBySold(false)
 
         if (AuthUtils.hasRole(Role.ADMIN)) {
             role = 'admin'
@@ -30,6 +30,6 @@ class HomeController {
             userProfile = user.getUserProfileType().name()
         }
 
-        render(view:"/index", model: [role: role, user: login.username, userId: user?.id, userProfile: userProfile]);
+        render(view:"/index", model: [role: role, user: login.username, userId: user?.id, userProfile: userProfile, itemList: itemList]);
     }
 }

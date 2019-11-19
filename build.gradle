@@ -52,6 +52,7 @@ dependencies {
     compile 'org.grails.plugins:spring-security-ui:3.1.1'
     compile 'org.grails.plugins:mail:2.0.0'
     compile 'org.grails.plugins:fields:3.0.0.RC1'
+    compile 'com.smartystreets.api:smartystreets-java-sdk:3.4.1'
 
     profile "org.grails.profiles:web"
     runtime "org.glassfish.web:el-impl:2.1.2-b03"

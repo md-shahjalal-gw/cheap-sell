@@ -9,7 +9,7 @@
         <a href="#edit-creditInformation" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <li><a class="home" href="${createLink(uri: '/home/index')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
@@ -29,7 +29,17 @@
             <g:form resource="${this.creditInformation}" method="PUT">
                 <g:hiddenField name="version" value="${this.creditInformation?.version}" />
                 <fieldset class="form">
-                    <f:all bean="creditInformation"/>
+                    <f:field bean="creditInformation" property="cardNumber"/>
+                    <f:field bean="creditInformation" property="cardHolder"/>
+                    <f:field bean="creditInformation" property="cvc"/>
+                    <f:field bean="creditInformation" property="expireMonth"/>
+                    <f:field bean="creditInformation" property="expireYear"/>
+                    <f:field bean="creditInformation" property="address1"/>
+                    <f:field bean="creditInformation" property="address2"/>
+                    <f:field bean="creditInformation" property="city"/>
+                    <f:field bean="creditInformation" property="state"/>
+                    <f:field bean="creditInformation" property="zip"/>
+                    <f:field bean="creditInformation" property="phone"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

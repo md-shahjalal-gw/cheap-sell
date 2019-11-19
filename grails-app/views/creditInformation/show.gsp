@@ -9,7 +9,7 @@
         <a href="#show-creditInformation" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <li><a class="home" href="${createLink(uri: '/home/index')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
@@ -19,7 +19,48 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="creditInformation" />
+
+            <div class="fieldcontain required">
+                <label>Card Holder:</label>${creditInformation?.cardHolder}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Card Number:</label>${creditInformation?.cardNumber}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>cvc:</label>${creditInformation?.cvc}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Expire Month:</label>${creditInformation?.expireMonth}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Expire Year:</label>${creditInformation?.expireYear}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Address 1:</label>${creditInformation?.address1}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Address 2:</label>${creditInformation?.address2}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>City:</label>${creditInformation?.city}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>Zip:</label>${creditInformation?.zip}
+            </div>
+
+            <div class="fieldcontain required">
+                <label>State:</label>${creditInformation?.state}
+            </div>
+
+
             <g:form resource="${this.creditInformation}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.creditInformation}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
