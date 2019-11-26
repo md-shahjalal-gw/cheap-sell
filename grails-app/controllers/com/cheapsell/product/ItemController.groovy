@@ -2,6 +2,7 @@ package com.cheapsell.product
 
 import com.cheapsell.AuthUtils
 import com.cheapsell.Utils
+import com.cheapsell.user.CreditInformation
 import com.cheapsell.user.Login
 import com.cheapsell.user.Role
 import com.cheapsell.user.User
@@ -74,6 +75,12 @@ class ItemController {
     }
 
     def create() {
+        if (CreditInformation.findByLogin((Login) springSecurityService.getCurrentUser()) == null) {
+            flash.message = "You have no credit information. Add one first"
+
+            redirect(uri: '/creditInformation/create')
+        }
+
         respond new Item(params)
     }
 

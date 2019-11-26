@@ -94,12 +94,12 @@ dataSource:
     driverClassName: com.mysql.jdbc.Driver
     dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     username: root
-    password: 'gwu123'
+    password: 'gwu12345'
 
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
+            dbCreate: update
             url: jdbc:mysql://localhost/cheapsell?useSSL=false&autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8
     test:
         dataSource:

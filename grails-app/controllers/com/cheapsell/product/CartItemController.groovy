@@ -1,5 +1,6 @@
 package com.cheapsell.product
 
+import com.cheapsell.user.CreditInformation
 import com.cheapsell.user.Login
 import grails.plugin.springsecurity.SpringSecurityService
 import org.springframework.beans.factory.annotation.Autowired
@@ -27,6 +28,12 @@ class CartItemController {
     }
 
     def checkout() {
+        if (CreditInformation.findByLogin((Login) springSecurityService.getCurrentUser()) == null) {
+            flash.message = "You have no credit information. Add one first"
+
+            redirect(uri: '/creditInformation/create')
+        }
+
         cartService.purchaseAll()
 
         flash.message = "Transaction Successful"

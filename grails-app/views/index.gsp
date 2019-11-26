@@ -56,7 +56,12 @@
                     </li>
                 </g:elseif>
                 <g:else>
-                    Please <a href="/register/register">Register</a> or <a href="/login">Login</a>
+                    <li class="controller">
+                        <a href="/login">Login</a>
+                    </li>
+                    <li class="controller">
+                        <a href="/register/register">Register</a>
+                    </li>
                 </g:else>
             </ul>
         </div>
