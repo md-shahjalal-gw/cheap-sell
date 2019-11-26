@@ -1,8 +1,8 @@
 grails {
     controllers {
         upload {
-            maxFileSize: 26214400
-            maxRequestSize: 26214400
+            maxFileSize: 126214400
+            maxRequestSize: 126214400
         }
     }
     gorm {
@@ -82,4 +82,15 @@ grails {
             ]
         }
     }
+}
+
+rabbitmq {
+    connections = [
+            [
+                    name    : "main",
+                    host    : "localhost",
+                    username: "root",
+                    password: "gwu12345"
+            ]
+    ]
 }

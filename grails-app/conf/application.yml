@@ -127,3 +127,12 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+
+rabbitmq:
+  connections:
+    - name: main
+      host: localhost
+      username: root
+      password: gwu12345
+  queues:
+    - name: wishList

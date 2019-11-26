@@ -1,5 +1,6 @@
 package com.cheapsell.product
 
+import com.budjb.rabbitmq.publisher.RabbitMessagePublisher
 import com.cheapsell.AuthUtils
 import com.cheapsell.Utils
 import com.cheapsell.user.CreditInformation
@@ -22,6 +23,8 @@ class ItemController {
     ItemEmailService itemEmailService
 
     ItemService itemService
+
+    RabbitMessagePublisher rabbitMessagePublisher
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
@@ -105,7 +108,10 @@ class ItemController {
 
             itemService.save(item)
 
-            itemEmailService.sendAvailableNotification(item)
+            rabbitMessagePublisher.send {
+                routingKey = "wishList"
+                body = [name: item.name, price: item.price, id: item.id]
+            }
         } catch (ValidationException e) {
             respond item.errors, view: 'create'
             return

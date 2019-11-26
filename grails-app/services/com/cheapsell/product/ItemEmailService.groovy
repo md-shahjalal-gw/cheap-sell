@@ -12,17 +12,17 @@ class ItemEmailService {
 
     def mailService
 
-    def sendAvailableNotification(Item item) {
-        def wishList = Wish.findByNameAndDescription(item.name, item.description)
+    def sendAvailableNotification(String name, int price, Long id) {
+        def wishList = Wish.findByName(name)
 
         for (Wish wish : wishList) {
-            if ((Math.abs(wish.price - item.price) / wish.price) < 0.11) {
+            if ((Math.abs(wish.price - price) / wish.price) < 0.11) {
                 mailService.sendMail {
                     from "info.cheapsell@gmail.com"
                     to wish.getLogin().getEmail()
                     subject "Item from Wish list available in Cheapsell"
-                    text "Your item from wish list available. " +  item.name + ": " + item.description +
-                            "\nYou can see now http://localhost:8080/item/show/" + item.id
+                    text "Your item from wish list available. " +  name +
+                            "\nYou can see now http://localhost:8080/item/show/" + id
                 }
             }
         }
