@@ -1,5 +1,11 @@
-# cheap-sell
-**Running Requirements:** To run the project you must install:
+# cheap-sell: The hundred dollar shop
+**Presentation Slide** [Slide](https://docs.google.com/presentation/d/1P50tzUtDCGKjlweBPq8L2sOVu1GoQDx1MfVYJh9guw4/edit#slide=id.g61ba13d400_0_5)
+
+**Presentation Video** [Video](https://drive.google.com/file/d/1CLRtYNFWZROAElaZTawrsgoadsP2Thmq/view)
+
+**Google Drive** [Drive](https://drive.google.com/drive/folders/1NQdiA0By_d9yk7ABQ93cuweIZmiHzZun?usp=sharing)
+
+**Running Requirements**
 - Groovy
 - Grails
 - MySQL 
@@ -12,9 +18,11 @@
 **Running Process**
 - grails run-app
 
-**Settings:** User name and password and other configuration must be updated in application.yml and application.groovy.
+**Settings:** User name and password and other configuration must be updated in [application.yml](https://github.com/md-shahjalal-gw/cheap-sell/blob/master/grails-app/conf/application.yml) and [application.groovy](https://github.com/md-shahjalal-gw/cheap-sell/blob/master/grails-app/conf/application.groovy).
 
-**Version information:** Version information available at build.gradle
+**Version information:** Version information available at [build.gradle](https://github.com/md-shahjalal-gw/cheap-sell/blob/master/build.gradle)
+
+**Initializer:** [BootStrap](https://github.com/md-shahjalal-gw/cheap-sell/blob/master/grails-app/init/cheap/sell/BootStrap.groovy)
 
 **List of Forms**
 - Registration
@@ -39,18 +47,19 @@
 
 **System Function**
 - User registration
+- Email verification
 - User authentication
 - Password management
-- Role Management
+- Role management
 - Create Buyer/Seller profile
-- Create Product profile
+- Create product profile
 - Verify Buyer/Seller
-- Post Item
-- Search Item
-- Buy Item
+- Post item
+- Search item
+- Buy item
 - Price estimation based on usage, condition, purchase price and date
 - Give item for free
-- Transaction Management for concurrency
+- Transaction management for concurrency
 - Add to/Remove from cart
 - Credit card information
 - Credit card verification
